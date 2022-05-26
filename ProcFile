@@ -1,1 +1,1 @@
-web: gunicorn biosensorproject.wsgi --log-file -
+web: gunicorn biosensorproject.wsgi:application--log-file -
