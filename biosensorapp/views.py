@@ -3,7 +3,7 @@ from django.core.serializers import serialize
 from django.shortcuts import render
 from biosensorapp.models import UserInformation,SensorData
 import json
-#import pyrebase
+import pyrebase
 
 
 def index(request):
@@ -14,7 +14,14 @@ def get_users_data(request):
     '''
         This function would return details of all users from the user info table
     '''
-    data = list(UserInformation.objects.values())    
+    data = list(UserInformation.objects.values()) 
+
+
+    user=authe.sign_in_with_email_and_password("u1@u1.com","abc123")
+    print(user)
+
+
+
     return JsonResponse({'data':data})
 
 
@@ -43,10 +50,11 @@ config={
       'storageBucket': "shoppingcartapp-8d98b.appspot.com",
       'messagingSenderId': "970381875676",
       'appId': "1:970381875676:web:9b82491ba1929f22875719",
-      'measurementId': "G-PGF48WDT3P"
+      'measurementId': "G-PGF48WDT3P",
+      'databaseURL' : ""
 }
 
 # # Initialising database,auth and firebase for further use
-# firebase=pyrebase.initialize_app(config)
-# authe = firebase.auth()
-# database=firebase.database()
+firebase=pyrebase.initialize_app(config)
+authe = firebase.auth()
+database=firebase.database()
