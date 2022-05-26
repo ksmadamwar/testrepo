@@ -17,7 +17,7 @@ def get_users_data(request):
     data = list(UserInformation.objects.values()) 
 
 
-    user=authe.sign_in_with_email_and_password("u1@u1.com","abc123")
+    user=authe.sign_in_with_email_and_password("test@test.com","***")
     print(user)
 
 
