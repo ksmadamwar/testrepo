@@ -3,7 +3,7 @@ from django.core.serializers import serialize
 from django.shortcuts import render
 from biosensorapp.models import UserInformation,SensorData
 import json
-import pyrebase
+#import pyrebase
 
 
 def index(request):
