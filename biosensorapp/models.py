@@ -78,3 +78,6 @@ class SensorData(models.Model):
 	created_by = models.CharField(max_length=200)
 	updated_by = models.CharField(max_length=200)
 
+
+	
+
