@@ -15,10 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
-
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',views.index),
     path('bio/', include('biosensorapp.urls')),
-    
+    path("static/<str:folder>/<str:file>", views.static_file_handler),
 ]

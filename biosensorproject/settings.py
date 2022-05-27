@@ -21,12 +21,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'django-insecure-ek0x(vk3)tr^$jiwo5_ffqy-c-ie_2-sg*rt8kt5&oe*u)#t_6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
+REACT_TEMPLATE_PATH = os.path.join(BASE_DIR, 'biosensorapp', 'templates')
 
 
 # Application definition
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    #'django.contrib.staticfiles',
     'biosensorapp',
     'corsheaders',
 ]
@@ -60,7 +61,7 @@ ROOT_URLCONF = 'biosensorproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [REACT_TEMPLATE_PATH],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +85,15 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
+
+   #  'default':{
+   #    'ENGINE':'django.db.backends.postgresql_psycopg2',
+   #    'NAME':'d59vel155125kq',
+   #    'USER':'pmjdoftyeodjxu',
+   #    'PASSWORD':'a62d691b1c89d48469132a8674708f42b6a36d0aec37d358004eac1b1365ef22',
+   #    'HOST':'ec2-52-3-2-245.compute-1.amazonaws.com',
+   #    'PORT':'5432',
+   # }
 }
 
 
@@ -127,7 +137,7 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, '../templates/build/static'),
 # )
 
-STATIC_ROOT  = os.path.join(BASE_DIR, 'staticfiles')
+
 
 
 # Default primary key field type

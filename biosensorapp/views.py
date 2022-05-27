@@ -17,8 +17,8 @@ def get_users_data(request):
     data = list(UserInformation.objects.values()) 
 
 
-    user=authe.sign_in_with_email_and_password("test@test.com","***")
-    print(user)
+    # user=authe.sign_in_with_email_and_password("test@test.com","***")
+    # print(user)
 
 
 
@@ -38,6 +38,9 @@ def get_sensor_data(request):
         data = list(SensorData.objects.filter(user_id = user_id).values())
         print(type(data))
         return JsonResponse({'sensor-data':data})
+
+
+
 
 
 
