@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import CustomBarChart from '../charts/BarCharts';
 import axios from 'axios';
 import { Layout,Row, Col, Divider } from 'antd';
+//import Constants from '../constants/AppConstants'
 const { Header, Footer, Sider, Content } = Layout;
 
 
@@ -18,7 +19,7 @@ const Home = () => {
     const headers = {
         'Content-Type': 'application/json'
     }
-    axios.get('http://127.0.0.1:8000/bio/get-users/')
+    axios.get('http://192.168.56.1:8000/bio/get-users/')
     .then(res => {
         data = res.data;
         if(data)
@@ -39,7 +40,7 @@ const handleUserSelect = () =>
   const headers = {
         'Content-Type': 'application/json'
     }
-    axios.post('http://127.0.0.1:8000/bio/get-sensor-data/',{'uid':uid})
+    axios.post('http://192.168.56.1:8000/bio/get-sensor-data/',{'uid':uid})
     .then(res => {
         data = res.data;
         if(data)

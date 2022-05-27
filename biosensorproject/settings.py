@@ -137,7 +137,7 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, '../templates/build/static'),
 # )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+#TATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 # Default primary key field type
@@ -148,6 +148,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
 
 
+# heroku hosting
+
 import django_heroku
 django_heroku.settings(locals())
+
+#firebase db conn
+
+FIREBASE_ORM_CERTIFICATE = 'biosensorproject/shoppingcartapp-8d98b-firebase-adminsdk-ccpb3-5836f534a6.json'
+FIREBASE_ORM_BUCKET_NAME = 'shoppingcartapp-8d98b.appspot.com'
 
