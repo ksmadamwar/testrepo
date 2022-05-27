@@ -22,11 +22,6 @@ def get_users_data(request):
     # user=authe.sign_in_with_email_and_password("test@test.com","***")
     # print(user)
 
-    # for validating user id token
-
-    
-
-
 
     return JsonResponse({'data':data})
 

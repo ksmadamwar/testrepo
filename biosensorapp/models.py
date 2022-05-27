@@ -59,9 +59,13 @@ class SensorData(models.Model):
 	class Meta:
 		db_table = 'sensor_data'
 	sensor_id = models.AutoField(primary_key=True)
-	user_id = models.ForeignKey(UserInformation, on_delete = models.CASCADE)
-	biosensor_id = models.ForeignKey(BiosensorTestType, on_delete = models.CASCADE)
-	cholinesterase_id = models.ForeignKey(CholinesteraseType,on_delete = models.CASCADE)
+	#user_id = models.ForeignKey(UserInformation, on_delete = models.CASCADE)
+	#biosensor_id = models.ForeignKey(BiosensorTestType, on_delete = models.CASCADE)
+	#cholinesterase_id = models.ForeignKey(CholinesteraseType,on_delete = models.CASCADE)
+
+	user_id = models.IntegerField()
+	biosensor_name = models.CharField(max_length=200, default = None,null = True)
+	cholinesterase_name = models.CharField(max_length=200, default = None,null = True)
 	test_time = models.DateTimeField()
 	activity = models.FloatField()
 	inhibition  = models.CharField(max_length=200,null = True,default = None, blank = True)
