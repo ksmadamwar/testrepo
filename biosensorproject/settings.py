@@ -137,7 +137,7 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, '../templates/build/static'),
 # )
 
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 # Default primary key field type
