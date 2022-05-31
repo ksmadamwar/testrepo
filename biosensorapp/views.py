@@ -55,6 +55,10 @@ def insert_data_from_mobile(request):
         after genereating serice account file from firebase project
         $env:GOOGLE_APPLICATION_CREDENTIALS="service-account-file.json"
     '''    
+    # to be removed later
+    SensorData.objects.all().delete()
+
+
     #reading request param
     body_unicode = request.body.decode('utf-8')     
     body = json.loads(body_unicode)
@@ -66,13 +70,19 @@ def insert_data_from_mobile(request):
             #validate the id token with firebase 
             if 'id_token' in body:
                 id_token = body['id_token']
-                default_app = firebase_admin.initialize_app();
+                # initializing firebase admin app only if it does not exist already
+                try:
+                    default_app = firebase_admin.get_app()
+                except Exception as e:
+                    default_app = firebase_admin.initialize_app();
+
                 decoded_token = auth.verify_id_token(id_token)
                 uid = decoded_token['uid']
                 #checking of user id is valid
                 if uid != "":        
                     data = body['data']
                     for row in data:
+                        print(row)
                         try:                            
                             #inserting data into sensor table                    
                             row_val = SensorData(
@@ -87,7 +97,7 @@ def insert_data_from_mobile(request):
                                 created_by = row['created_by'],
                                 updated_by = row['updated_by']
                                 )
-                            #row_val.save()
+                            row_val.save()
                             status = 'OK'
                             msg = 'Insertion successfull'
                         except Exception as e:
