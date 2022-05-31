@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import React, { Component } from 'react';
 import CustomBarChart from '../charts/BarCharts';
+import CustomLineChart from '../charts/LineChart';
 import axios from 'axios';
 import { Layout,Row, Col, Divider } from 'antd';
 import * as Constants from '../constants/AppConstants'
@@ -44,8 +45,7 @@ const handleUserSelect = () =>
     .then(res => {
         data = res.data;
         if(data)
-        {
-          
+        {          
          setBarData(data['sensor-data'])
         }
     })
@@ -71,6 +71,7 @@ const handleUserSelect = () =>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
              <Col className="gutter-row" span={24}>
                 <CustomBarChart bardata = {barData}/>
+                <CustomLineChart/>
               </Col>
         </Row>
     </Content>
