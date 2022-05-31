@@ -1,7 +1,7 @@
-1. Install Python 3
-2. Install Django
-3. Run below command - pip install -m requirements.txt
-4. Install node
+1. Install Python 3 https://www.python.org/downloads/ version used for deveopment 3.10.4
+2. Install Django https://docs.djangoproject.com/en/4.0/topics/install/
+3. Go to the cloned git folder and run command - "pip install -m requirements.txt"
+4. Install node https://nodejs.org/en/download/
 5. Go to Biosensorproject/biosensorapp/templates, run "npm install"
 6. Get firebase account service file using this link, https://clemfournier.medium.com/how-to-get-my-firebase-service-account-key-file-f0ec97a21620
 	a. Select python from the options and download the file

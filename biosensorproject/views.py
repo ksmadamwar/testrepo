@@ -6,8 +6,7 @@ from biosensorproject.settings import REACT_TEMPLATE_PATH
 
 
 def index(request):
-    print("called-----------------",REACT_TEMPLATE_PATH)
-
+    # to serve react js view when loaded first
     return render(request, 'build/index.html')
 
 

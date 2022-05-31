@@ -86,14 +86,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 
-   #  'default':{
-   #    'ENGINE':'django.db.backends.postgresql_psycopg2',
-   #    'NAME':'d59vel155125kq',
-   #    'USER':'pmjdoftyeodjxu',
-   #    'PASSWORD':'a62d691b1c89d48469132a8674708f42b6a36d0aec37d358004eac1b1365ef22',
-   #    'HOST':'ec2-52-3-2-245.compute-1.amazonaws.com',
-   #    'PORT':'5432',
-   # }
 }
 
 
@@ -128,16 +120,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.0/howto/static-files/
-
 STATIC_URL = '/static/'
-
-# STATICFILES_DIRS   = (
-#     os.path.join(BASE_DIR, '../templates/build/static'),
-# )
-
-#TATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 
 # Default primary key field type
@@ -148,13 +131,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ORIGIN_ALLOW_ALL = True
 
 
-# heroku hosting
+# for heroku hosting, to be removed later
 
 import django_heroku
 django_heroku.settings(locals())
 
-#firebase db conn
-
-FIREBASE_ORM_CERTIFICATE = 'biosensorproject/shoppingcartapp-8d98b-firebase-adminsdk-ccpb3-5836f534a6.json'
-FIREBASE_ORM_BUCKET_NAME = 'shoppingcartapp-8d98b.appspot.com'
 
