@@ -38,8 +38,6 @@ class SensorData(models.Model):
 	inhibition  = models.CharField(max_length=200,null = True,default = None, blank = True)
 	baseline = models.FloatField()
 	comments = models.TextField()	
-	extra2  = models.IntegerField(null = True, default = None, blank = True)
-	extra3  = models.CharField(max_length=200,null = True,default = None, blank = True)
 	created_at = models.DateTimeField(auto_now_add = True)
 	updated_at = models.DateTimeField(auto_now = True)
 	created_by = models.CharField(max_length=200)
