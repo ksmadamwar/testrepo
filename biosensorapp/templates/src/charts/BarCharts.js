@@ -12,7 +12,7 @@ const CustomBarChart = (props) => {
 	return(
 		<>
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-				<Col className="gutter-row" span={12}>
+				<Col className="gutter-row" span={24}>
 				  	<BarChart width={600} height={300} data={props.bardata}>
 					    <XAxis dataKey="testtime"  />
 					    <YAxis />

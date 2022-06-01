@@ -11,7 +11,7 @@
 		same referring this link - https://firebase.google.com/docs/admin/setup#windows
 		for windows just run below command from the shell 
 		$env:GOOGLE_APPLICATION_CREDENTIALS=<PATH TO SERVICES JSON FILE>(the one downloaded from step above)
-6. go to "biosensorproject/biosensorapp/templates/src/constants/AppConstants.js" file and update the ip addr as your local machine ip(to run locally)
+6. go to "biosensorproject/biosensorapp/templates/src/constants/AppConstants.js" file and update the "API_URL" as your local machine ip(to run locally)
 7. open terminal and go to the folder where the codebase is cloned, open "biosensorproject" folder, you
 should see "manage.py" run the command as "python manage.py runserver yourapp:8000"
 8. go to the browser and open the above URL, you should see the app running

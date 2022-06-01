@@ -17,7 +17,7 @@ const CustomLineChart = (props) => {
 	return(
 		<>
 			<Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-             	<Col className="gutter-row" span={12}>
+             	<Col className="gutter-row" span={24}>
 					<LineChart width={400} height={400} data={data}>
 				    	<Line type="monotone" dataKey="uv" stroke="#8884d8" />
 				  	</LineChart>

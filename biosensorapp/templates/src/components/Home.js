@@ -69,10 +69,12 @@ const handleUserSelect = () =>
               </Col>
         </Row>
         <Row gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}>
-             <Col className="gutter-row" span={24}>
+             <Col className="gutter-row" span={12}>
                 <CustomBarChart bardata = {barData}/>
+            </Col>
+            <Col className="gutter-row" span={12}>
                 <CustomLineChart/>
-              </Col>
+            </Col>
         </Row>
     </Content>
   </Layout>

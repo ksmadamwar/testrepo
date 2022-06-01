@@ -16,6 +16,8 @@ def index(request):
 def get_users_data(request):
     '''
         This function would return details of all users from the user info table
+        this is a GET api request, so no inputs are needed
+        output - list of users present in the db
     '''
     data = list(UserInformation.objects.values())
     return JsonResponse({'data':data})
@@ -24,6 +26,8 @@ def get_users_data(request):
 def get_sensor_data(request):
     '''
         This function would return sensor data for a particular user
+        input - userid
+        output - sensor data json
     '''    
     body_unicode = request.body.decode('utf-8')     
     body = json.loads(body_unicode)
@@ -44,6 +48,9 @@ def insert_data_from_mobile(request):
         it will validate if id token is valid using firebase admin
         and only then insert the data.
 
+        input required - idtoken, data to be inserted
+        output - insertion status, msg
+
 
         Prerequisites-
         Create serive key if does not exist already - https://firebase.google.com/docs/admin/setup#windows
@@ -54,9 +61,12 @@ def insert_data_from_mobile(request):
         save in PATH env variable https://www.computerhope.com/issues/ch000549.htm)
         after genereating serice account file from firebase project
         $env:GOOGLE_APPLICATION_CREDENTIALS="service-account-file.json"
+
+
     '''    
     # to be removed later
-    SensorData.objects.all().delete()
+    #SensorData.objects.all().delete()
+
 
 
     #reading request param
@@ -78,6 +88,7 @@ def insert_data_from_mobile(request):
 
                 decoded_token = auth.verify_id_token(id_token)
                 uid = decoded_token['uid']
+                insert_count = 0
                 #checking of user id is valid
                 if uid != "":        
                     data = body['data']
@@ -97,9 +108,9 @@ def insert_data_from_mobile(request):
                                 created_by = row['created_by'],
                                 updated_by = row['updated_by']
                                 )
-                            row_val.save()
-                            status = 'OK'
-                            msg = 'Insertion successfull'
+                            #row_val.save()
+                            insert_count += 1
+                            
                         except Exception as e:
                             status = 'ERROR'
                             msg  = e
@@ -108,7 +119,45 @@ def insert_data_from_mobile(request):
                     status = 'ERROR'
                     msg = 'Token not authorized'
 
+    if insert_count == len(data):
+        status = 'OK'
+        msg = 'Insertion successful'
+
     return JsonResponse({"status": status,"msg":msg})
+
+
+def get_last_test_details(request):
+    '''
+        This function would return the last test details 
+        for selected test type of a particular user,
+        these details could be used to indentify
+        the data insertion part when there is
+        no intenet connection for a while
+
+        input required - user id , biosensortest name
+        output - sensor data json
+    '''
+    data = {}
+
+    # reading request parameters
+    body_unicode = request.body.decode('utf-8')     
+    body = json.loads(body_unicode)
+
+    if body:
+        if 'user_id' in body and 'biosensor_name' in body: 
+            user_id = body['user_id']
+            biosensor_name = body ['biosensor_name']
+            data = list(SensorData.objects.filter(user_id= user_id).order_by('test_time').reverse().values())[0]
+            status = 'OK'
+            msg = 'Success'
+        else:
+            msg = "Either of the input missing i.e., biosensor_name, user_id"
+            status = "ERROR"
+    else:
+        status = 'ERROR'
+        msg = "Something went wrong"
+    return JsonResponse({'data':data, 'status':status,'msg':msg})
+
 
 
 

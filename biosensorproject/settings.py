@@ -83,8 +83,36 @@ WSGI_APPLICATION = 'biosensorproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db1.sqlite3'),
     }
+
+   # 'default': {
+   #      # String. It must be "mssql".
+   #      'ENGINE': 'sql_server.pyodbc',
+
+   #      # String. Database name. Required.
+   #      'NAME': 'biodb',
+
+   #      # String. Database user name in "user" format. If not given then MS Integrated Security will be used.
+   #      'USER': 'adminuser',
+
+   #      # String. Database user password.
+   #      'PASSWORD': 'adminuser',
+
+   #       # String. SQL Server instance in "server\instance" format.
+   #      'HOST': "KOMAL\\SQLEXPRESS",
+
+   #      # String. Server instance port. An empty string means the default port.
+   #      'PORT': '1433',
+
+   #      # Dictionary. Additional database settings.
+   #      'OPTIONS': {
+   #          # String. ODBC Driver to use ("ODBC Driver 17 for SQL Server", 
+   #          # "SQL Server Native Client 11.0", "FreeTDS" etc). 
+   #          # Default is "ODBC Driver 17 for SQL Server".
+   #          'driver': 'ODBC Driver 17 for SQL Server',
+   #      },
+   #  },
 
 }
 
