@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* css for login page */
+
+.form-elem
+{
+  font-style: bold;
+  font-weight: 600;
+
+}
+
+
+.form-body{
+  padding: 40px !important;
+  /*background-color: lightgray;*/
+  margin: 110px 510px 110px 510px !important;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+  background: rgba(211, 211, 211, 0.83);
+}
+
+.form-button{
+  padding-left: 40px !important;
+  padding-right: 40px !important;
+}

@@ -159,18 +159,61 @@ def get_last_test_details(request):
     return JsonResponse({'data':data, 'status':status,'msg':msg})
 
 
+def user_login(request):
+    '''
+        This function would be used to validate user login information
+    '''
+    data = {}
+    # reading request parameters
+    body_unicode = request.body.decode('utf-8')     
+    body = json.loads(body_unicode)
+    useremail = body['user_email']
+    password = body['user_pass']  
+    status = "ERROR"  
+    msg = ""
+
+    config={
+          'apiKey': "AIzaSyCegFLQg5tlXi6ixQCa6JE7vq0opJXYySo",
+          'authDomain': "shoppingcartapp-8d98b.firebaseapp.com",
+          'projectId': "shoppingcartapp-8d98b",
+          'storageBucket': "shoppingcartapp-8d98b.appspot.com",
+          'messagingSenderId': "970381875676",
+          'appId': "1:970381875676:web:9b82491ba1929f22875719",
+          'measurementId': "G-PGF48WDT3P",
+          'databaseURL' : ""
+    }
+    firebase=pyrebase.initialize_app(config)
+    authe = firebase.auth()
+    database=firebase.database()
+    try:
+        user = authe.sign_in_with_email_and_password(useremail,password)
+        session_id=user['idToken']
+        request.session['uid']=str(session_id)
+        status = "OK"
+        msg = "Login Success"
+    except:
+        status = "ERROR"
+        message="Invalid Credentials!!Please ChecK your Data"
+
+    return JsonResponse({'user_data':user, 'status':status,'msg':msg})
+
+
+def user_logout(request):
+    '''
+        This function would log the user out 
+        and clear the session variable
+    '''
+    request.session['uid']=""
+    return JsonResponse({'data':{}})
+
+def check_session(request):
+    '''
+        This function would check if the user's data is stored 
+        in the session
+    '''
+    uid = request.session['uid']
+    
 
 
 ''' for firebase '''
-
-config={
-      'apiKey': "AIzaSyCegFLQg5tlXi6ixQCa6JE7vq0opJXYySo",
-      'authDomain': "shoppingcartapp-8d98b.firebaseapp.com",
-      'projectId': "shoppingcartapp-8d98b",
-      'storageBucket': "shoppingcartapp-8d98b.appspot.com",
-      'messagingSenderId': "970381875676",
-      'appId': "1:970381875676:web:9b82491ba1929f22875719",
-      'measurementId': "G-PGF48WDT3P",
-      'databaseURL' : ""
-}
 
